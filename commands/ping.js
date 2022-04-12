@@ -2,11 +2,11 @@ const {SlashCommandBuilder} = require("@discordjs/builders")
 
 module.exports.data = new SlashCommandBuilder()
 .setName("ping")
-.setDescription("Pingthe user");
+.setDescription("Ping the user");
 
 module.exports.run = (bot,interaction) => {
-    console.log("HIT", interaction)
+    //console.log("HIT", interaction)
     interaction.editReply({
-        content: "Hello"
+        content: "Pong!"
     })
 }
