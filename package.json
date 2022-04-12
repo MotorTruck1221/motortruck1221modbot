@@ -1,0 +1,18 @@
+{
+  "name": "zigzagbot",
+  "version": "1.0.0",
+  "description": "The Discord Bot For the Zig Zag Roblox group.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MotorTruck1221",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.31.0",
+    "discord.js": "^13.6.0",
+    "nodemon": "^2.0.15"
+  }
+}
