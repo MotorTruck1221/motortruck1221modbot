@@ -3,7 +3,7 @@ const { memberNicknameMention } = require('@discordjs/builders');
 const Discord = require('discord.js');
 const Bot = new Discord.Client({intents: [Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.DIRECT_MESSAGES]});
 const { token } = require('./config.js');
-require("./slash-register")(true);
+require("./slash-register")();
 let commands = require("./slash-register").commands;
 
 Bot.on('ready', () => {
