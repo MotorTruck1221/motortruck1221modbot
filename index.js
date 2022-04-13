@@ -9,6 +9,7 @@ let commands = require("./slash-register").commands;
 Bot.on('ready', () => {
     console.log("Bot is online!")
     let commands = Bot.application.commands;
+    Bot.user.setActivity('for /help', { type: 'WATCHING' })
 })
 
 Bot.on('interactionCreate', async interaction => {

@@ -11,7 +11,7 @@ module.exports.run = (bot,interaction,options) => {
     if(!permissions.has("MANAGE_MESSAGES")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
     
     let member = options.getMember("person");
-    if(!member) return interaction.editReply({content: "Meber does not exist or Member was not provided."})
+    if(!member) return interaction.editReply({content: "Member does not exist or Member was not provided."})
 
     let embed = new MessageEmbed()
     .setTitle(`Manage ${member.user.username}`)
@@ -46,20 +46,35 @@ module.exports.button = (bot, interaction, member, action) => {
     if(action == "ban") {
         if(!permissions.has("MANAGE_GUILD")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
         member.ban();
+        let embed = new MessageEmbed()
+        .setTitle(`Sucessfully banned ${member}`)
+        .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+        .setColor('#0099ff')
         return interaction.editReply({
-            content: `Sucessfully banned ${member}`,
+            embeds: [embed],
+            //content: `Sucessfully banned ${member}`,
             ephmeral: true
         })
     } else if(action == "kick"){
         member.kick();
+        let embed = new MessageEmbed()
+        .setTitle(`Sucessfully kicked ${member}`)
+        .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+        .setColor('#0099ff')
         return interaction.editReply({
-            content: `Sucessfully kicked ${member}`,
+            embeds: [embed],
+            //content: `Sucessfully kicked ${member}`,
             ephmeral: true
         })
     } else if(action == "timeout"){
         member.timeout(5 * 60 * 1000);
+        let embed = new MessageEmbed()
+        .setTitle(`Sucessfully muted ${member} for *five minutes**`)
+        .setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN \n If you do you will break the bot**")
+        .setColor('#0099ff')
         return interaction.editReply({
-            content: `Sucessfully muted ${member}`,
+            embeds: [embed],
+            //content: `Sucessfully muted ${member}`,
             ephmeral: true
     })
   }
