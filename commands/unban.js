@@ -8,7 +8,7 @@ module.exports.data = new SlashCommandBuilder()
 //.addStringOption(option => option.setName("reason").setDescription("the reason for banning the user"))
 //permission: Permissions.FLAGS.Ban_members
 
-module.exports.run = (bot,interaction,options) => {
+module.exports.run = (bot,interaction,options)  => {
     let permissions = interaction.member.permissions;
     if(!permissions.has("MANAGE_GUILD")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
     
