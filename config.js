@@ -1,3 +1,3 @@
 module.exports = {
-    token: "Your_TOKEN"
+    token: "Your__TOKEN"
 }
