@@ -48,7 +48,7 @@ module.exports.button = (bot, interaction, member, action) => {
         member.ban().then( () => {
             let embed = new MessageEmbed()
             .setTitle(`Sucessfully banned ${member}`)
-            .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+            //.setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
             .setColor('#0099ff')
             return interaction.editReply({
                 embeds: [embed],
@@ -64,7 +64,7 @@ module.exports.button = (bot, interaction, member, action) => {
         member.kick().then (() => {
             let embed = new MessageEmbed()
             .setTitle(`Sucessfully kicked ${member}`)
-            .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+            //.setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
             .setColor('#0099ff')
             return interaction.editReply({
                 embeds: [embed],
@@ -79,8 +79,8 @@ module.exports.button = (bot, interaction, member, action) => {
         if(!permissions.has("TIMEOUT_MEMBERS")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
         member.timeout(5 * 60 * 1000).then( () => {
             let embed = new MessageEmbed()
-            .setTitle(`Sucessfully muted ${member} for *five minutes**`)
-            .setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN \n If you do you will break the bot**")
+            .setTitle(`Sucessfully muted ${member} for **five minutes**`)
+            .setDescription("If you would like to mute for a longer time please use /mute \n -----------")
             .setColor('#0099ff')
             return interaction.editReply({
                 embeds: [embed],
