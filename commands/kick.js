@@ -1,4 +1,5 @@
 const {SlashCommandBuilder} = require("@discordjs/builders")
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
 
 module.exports.data = new SlashCommandBuilder()
 .setName("kick")
@@ -11,12 +12,13 @@ module.exports.run = (bot,interaction,options) => {
     if(!permissions.has("MANAGE_MESSAGES")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
     
     let member = options.getMember("person");
-    let reason = options.getString("reason")
-    if(!member) return interaction.editReply({content: "Meber does not exist or Member was not provided."})
+    let reason = options.getString("reason");
+
+    if(!member) return interaction.editReply({content: "Member does not exist or Member was not provided."})
     if(!reason) reason = "N/A"
     member.kick(reason).then( () => {
-        if(reason == "N/A") interaction.editReply({content: `User ${member.displayname} was succesfully kicked`})
-        interaction.editReply({content: `User ${member.displayname} was succesfully kicked for **${reason}**`})
+        if(reason == "N/A") interaction.editReply({content: `User ${member.user.username} was succesfully kicked`})
+        interaction.editReply({content: `User ${member.user.username} was succesfully kicked for **${reason}**`})
 
     } ).catch(error => {
         console.log(error);

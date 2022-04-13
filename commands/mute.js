@@ -1,4 +1,5 @@
 const {SlashCommandBuilder} = require("@discordjs/builders")
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js')
 
 module.exports.data = new SlashCommandBuilder()
 .setName("mute")
@@ -18,8 +19,8 @@ module.exports.run = (bot,interaction,options) => {
     if(!member) return interaction.editReply({content: "Member does not exist or Member was not provided."})
     if(!reason) reason = "N/A"
     member.timeout(timei * 60 * 1000, reason).then( () => {
-        if(reason == "N/A") interaction.editReply({content: `User ${member.displayname} was succesfully timed out`})
-        interaction.editReply({content: `User ${member.displayname} was succesfully timed out for **${reason}**`})
+        if(reason == "N/A") interaction.editReply({content: `User ${member.user.username} was succesfully timed out`})
+        interaction.editReply({content: `User ${member.user.username} was succesfully timed out for **${reason}**`})
 
     } ).catch(error => {
         console.log(error);
