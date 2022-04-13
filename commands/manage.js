@@ -45,37 +45,51 @@ module.exports.button = (bot, interaction, member, action) => {
     let permissions = interaction.member.permissions;
     if(action == "ban") {
         if(!permissions.has("MANAGE_GUILD")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
-        member.ban();
-        let embed = new MessageEmbed()
-        .setTitle(`Sucessfully banned ${member}`)
-        .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
-        .setColor('#0099ff')
-        return interaction.editReply({
-            embeds: [embed],
-            //content: `Sucessfully banned ${member}`,
-            ephmeral: true
+        member.ban().then( () => {
+            let embed = new MessageEmbed()
+            .setTitle(`Sucessfully banned ${member}`)
+            .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+            .setColor('#0099ff')
+            return interaction.editReply({
+                embeds: [embed],
+                //content: `Sucessfully banned ${member}`,
+                ephmeral: true
+        })
+        }).catch(error => {
+            console.log(error);
+            interaction.editReply({content: "An error occured"})
         })
     } else if(action == "kick"){
-        member.kick();
-        let embed = new MessageEmbed()
-        .setTitle(`Sucessfully kicked ${member}`)
-        .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
-        .setColor('#0099ff')
-        return interaction.editReply({
-            embeds: [embed],
-            //content: `Sucessfully kicked ${member}`,
-            ephmeral: true
-        })
-    } else if(action == "timeout"){
-        member.timeout(5 * 60 * 1000);
-        let embed = new MessageEmbed()
-        .setTitle(`Sucessfully muted ${member} for *five minutes**`)
-        .setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN \n If you do you will break the bot**")
-        .setColor('#0099ff')
-        return interaction.editReply({
-            embeds: [embed],
-            //content: `Sucessfully muted ${member}`,
-            ephmeral: true
+        if(!permissions.has("KICK_MEMBERS")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
+        member.kick().then (() => {
+            let embed = new MessageEmbed()
+            .setTitle(`Sucessfully kicked ${member}`)
+            .setDescription("**NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
+            .setColor('#0099ff')
+            return interaction.editReply({
+                embeds: [embed],
+                //content: `Sucessfully kicked ${member}`,
+                ephmeral: true
+            }).catch(error => {
+                console.log(error);
+                interaction.editReply({content: "An error occured"})
+        });
     })
-  }
+ } else if(action == "timeout"){
+        if(!permissions.has("TIMEOUT_MEMBERS")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
+        member.timeout(5 * 60 * 1000).then( () => {
+            let embed = new MessageEmbed()
+            .setTitle(`Sucessfully muted ${member} for *five minutes**`)
+            .setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN \n If you do you will break the bot**")
+            .setColor('#0099ff')
+            return interaction.editReply({
+                embeds: [embed],
+                //content: `Sucessfully muted ${member}`,
+                ephmeral: true
+            })
+    }).catch(error => {
+        console.log(error);
+        interaction.editReply({content: "An error occured"})
+    })   
+    }
 }

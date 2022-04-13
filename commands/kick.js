@@ -9,7 +9,7 @@ module.exports.data = new SlashCommandBuilder()
 
 module.exports.run = (bot,interaction,options) => {
     let permissions = interaction.member.permissions;
-    if(!permissions.has("MANAGE_MESSAGES")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
+    if(!permissions.has("KICK_MEMBERS")) return interaction.editReply({content: "You don't have the correct permissions to run this command"})
     
     let member = options.getMember("person");
     let reason = options.getString("reason");
