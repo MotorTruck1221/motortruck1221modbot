@@ -18,12 +18,12 @@ module.exports.run = (bot,interaction,options) => {
     var timei = parseInt(time);
     // Embed
     let embed = new MessageEmbed()
-    .setTitle(`User ${member.user.username} was succesfully timed out for **${reason}** \n Time: ${timei}minutes`)
+    .setTitle(`User ${member.user.username} was succesfully timed out | **${reason}** \n Time: ${timei}minutes`)
     //.setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
     .setColor('#0099ff')
     // End EMBED
     if(!member) return interaction.editReply({content: "Member does not exist or Member was not provided."})
-    //if(!reason) reason = "N/A"
+    if(!reason) reason = "No Reason Provided"
     member.timeout(timei * 60 * 1000, reason).then( () => {
         //if(reason == "N/A") interaction.editReply({content: `User ${member.user.username} was succesfully timed out`})
         interaction.editReply({embeds: [embed]})

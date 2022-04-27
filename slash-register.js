@@ -10,7 +10,7 @@ module.exports = () => {
 
     // Place your client and guild ids here
     const clientId = '962817209170796584';
-    const guildId = '962817113624571974';
+    const guildId = '967074925590491196';
 
     for (const file of commandFiles) {
     	const command = require(`./commands/${file}`);
@@ -23,15 +23,15 @@ module.exports = () => {
         try {
             console.log('Started refreshing application (/) commands.');
         
-            await rest.put(
-                Routes.applicationCommands(clientId),
-                { body: commands },
-            );   
-            
             // await rest.put(
-            //     Routes.applicationGuildCommands(clientId, guildId),
+            //     Routes.applicationCommands(clientId),
             //     { body: commands },
-            // );
+            // );   
+            
+            await rest.put(
+                Routes.applicationGuildCommands(clientId, guildId),
+                { body: commands },
+            );
         
                 console.log('Successfully reloaded application (/) commands.');
         } catch (error) {
