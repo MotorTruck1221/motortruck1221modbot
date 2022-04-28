@@ -5,8 +5,10 @@ const Bot = new Discord.Client({intents: [Discord.Intents.FLAGS.GUILD_MEMBERS, D
 const { token } = require('./config.js');
 require("./slash-register")();
 let commands = require("./slash-register").commands;
+const {settings} = require("./database.js")
 
 Bot.on('ready', () => {
+    settings.sync();
     console.log("Bot is online!")
     let commands = Bot.application.commands;
     Bot.user.setActivity('for /help', { type: 'WATCHING' })
@@ -20,7 +22,7 @@ Bot.on('interactionCreate', async interaction => {
 
         let commandMethod  = commands.get(name);
         if(!commandMethod) return;
-        commandMethod.run(Bot, interaction, options)
+        commandMethod.run(Bot, interaction, options, settings)
     } else if (interaction.isButton()){
         let button_id = interaction.customId;
         // button_id = ban-1234567
