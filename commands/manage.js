@@ -16,7 +16,7 @@ module.exports.run = (bot,interaction,options) => {
     let embed = new MessageEmbed()
     .setTitle(`Manage ${member.user.username}`)
     .setDescription("Click one of the buttons below to manage a user")
-    .setColor('#0099ff')
+    .setColor('#ff340d')
 
     const row = new MessageActionRow()
     .addComponents(
