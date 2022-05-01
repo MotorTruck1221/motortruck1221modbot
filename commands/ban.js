@@ -16,7 +16,7 @@ module.exports.run = (bot,interaction,options) => {
     let embed = new MessageEmbed()
     .setTitle(`User ${member.user.username} was succesfully banned | **${reason}**`)
     //.setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
-    .setColor('#0099ff')
+    .setColor('ff340d')
     if(!member) return interaction.editReply({content: "Meber does not exist or Member was not provided."})
     if(!reason) reason = "No Reason Provided"
     //if(!days) days = "7"
