@@ -16,7 +16,7 @@ module.exports.run = (bot,interaction,options) => {
     let embed = new MessageEmbed()
     .setTitle(`Help`)
     .setDescription(`Help for the bot \n Note: The documentation and buttons are currently being worked on`)
-    .setColor('#0099ff')
+    .setColor('ff340d')
 
     const row = new MessageActionRow()
     .addComponents(
