@@ -20,7 +20,7 @@ module.exports.run = (bot,interaction,options) => {
     let embed = new MessageEmbed()
     .setTitle(`User ${member.user.username} was succesfully timed out | **${reason}** \n Time: ${timei}minutes`)
     //.setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
-    .setColor('#0099ff')
+    .setColor('ff340d')
     // End EMBED
     if(!member) return interaction.editReply({content: "Member does not exist or Member was not provided."})
     if(!reason) reason = "No Reason Provided"
