@@ -28,7 +28,7 @@ module.exports.run = async (bot,interaction,options,settings) => {
     let embed = new MessageEmbed()
     .setTitle('Added!')
     .setDescription("The Setup has completed!!")
-    .setColor('14d503')
+    .setColor('ff340d')
     
     interaction.editReply({embeds: [embed]}).then(() =>{
     }).catch(error => {
