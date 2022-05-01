@@ -11,7 +11,7 @@ module.exports.run = (bot,interaction) => {
     var botping = Math.round(bot.ws.ping)
     let embed = new MessageEmbed()
     .setTitle("Pong!")
-    .setColor('#0099ff')
+    .setColor('#ff340d')
     .setDescription(`Your Ping: **${yourping}** \n Bots ping: **${botping}**`)
     interaction.editReply({
         embeds: [embed]
