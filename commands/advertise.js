@@ -32,7 +32,7 @@ module.exports.run = async (bot,interaction,options,settings) => {
     let embed = new MessageEmbed()
     .setTitle(`${title}`)
     //.setDescription("If you would like to mute for a longer time please use /mute \n ----------- \n **NOTE: DO NOT CLICK THE SAME BUTTON \n PLEASE TYPE /manage AGAIN**")
-    .setColor('14d503')
+    .setColor('ff340d')
     .addFields(
         { name: 'Description', value: `${description}` },
         { name: 'Server Invite', value: `[Server Invite](${invite})` }
