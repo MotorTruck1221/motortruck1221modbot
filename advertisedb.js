@@ -20,7 +20,7 @@ const database = new Sequelize('database', 'user', 'password', {
   //  tag: Sequelize.STRING
 //})
 
-module.exports.settings = database.define('settings', {
+module.exports.settings = database.define('premium', {
     id: {
         primaryKey: true,
         type: Sequelize.STRING,

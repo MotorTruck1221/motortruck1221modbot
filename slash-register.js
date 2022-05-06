@@ -10,7 +10,7 @@ module.exports = () => {
 
     // Place your client and guild ids here
     const clientId = '962817209170796584';
-    const guildId = '967631576538173510';
+    const guildId = '967631576538173510';//'968319055717085184';
 
     for (const file of commandFiles) {
     	const command = require(`./commands/${file}`);

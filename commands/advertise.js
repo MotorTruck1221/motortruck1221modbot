@@ -7,7 +7,7 @@ module.exports.data = new SlashCommandBuilder()
 .addStringOption(option => option.setName("title").setDescription("the title of the advertisment").setRequired(true))
 .addStringOption(option => option.setName("description").setDescription("the description of the advertisement").setRequired(true))
 .addStringOption(option => option.setName("invite").setDescription("the link to the server").setRequired(true))
-.addStringOption(option => option.setName("image").setDescription("An image to send.(URL only)").setRequired(true))
+//.addStringOption(option => option.setName("image").setDescription("An image to send.(URL only)"))
 
 module.exports.run = async (bot,interaction,options,settings) => {
     let guil = interaction.guild.id
@@ -18,7 +18,7 @@ module.exports.run = async (bot,interaction,options,settings) => {
     let title = options.getString("title")
     let description = options.getString("description")
     let invite = options.getString("invite")
-    let image = options.getString("image")
+    //let image = options.getString("image")
     let channel = getGuild.channel
     //console.log(getGuild)
     //if(!invite.has('https://')) return interaction.editReply('That is not a URL!')
@@ -37,7 +37,7 @@ module.exports.run = async (bot,interaction,options,settings) => {
         { name: 'Description', value: `${description}` },
         { name: 'Server Invite', value: `[Server Invite](${invite})` }
     )
-    .setThumbnail(`${image}`)
+    //.setThumbnail(`${image}`)
     .setFooter('To advertise your own server type /advertise')
     bot.channels.fetch(`${channel}`)
     bot.channels.cache.get(`${channel}`).send({embeds: [embed]}).then(() => {

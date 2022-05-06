@@ -5,13 +5,21 @@ const Bot = new Discord.Client({intents: [Discord.Intents.FLAGS.GUILD_MEMBERS, D
 const { token } = require('./config.js');
 require("./slash-register")();
 let commands = require("./slash-register").commands;
-const {settings} = require("./database.js")
+const {settings} = require("./advertisedb.js")
+const {owner} = require("./ownerOnly.js")
+const wID = '818995901791207454'
 
-Bot.on('ready', () => {
+
+
+Bot.on('ready', async () => {
     settings.sync();
+    owner.sync();
+    const pp = await owner.findOne({where: {oID: wID}})
+    stat = (pp.status)
+    gam = (pp.game)
     console.log("Bot is online!")
     let commands = Bot.application.commands;
-    Bot.user.setActivity('for /help', { type: 'WATCHING' })
+    Bot.user.setActivity(`${gam}`, { type: `${stat}` })
 })
 
 Bot.on('interactionCreate', async interaction => {
@@ -19,10 +27,9 @@ Bot.on('interactionCreate', async interaction => {
     if(interaction.isCommand()){
         let name = interaction.commandName;
         let options = interaction.options;
-
         let commandMethod  = commands.get(name);
         if(!commandMethod) return;
-        commandMethod.run(Bot, interaction, options, settings)
+        commandMethod.run(Bot, interaction, options, settings, owner)
     } else if (interaction.isButton()){
         let button_id = interaction.customId;
         // button_id = ban-1234567
